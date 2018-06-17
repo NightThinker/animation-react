@@ -12,10 +12,6 @@ class App extends Component {
     modalIsOpen: false,
     showBlock: false
   }
-
-  componentDidMount = () => {
-    console.log(this.modalIsOpen);
-  }
   
 
   showModal = () => {
@@ -32,7 +28,18 @@ class App extends Component {
         <h1>React Animations</h1>
         <button className="Button" onClick={() => this.setState(prevState => ({showBlock: !prevState.showBlock}))}>Toggle</button>
         <br/>
-        <Transition in={this.state.showBlock} timeout={1000} mountOnEnter unmountOnExit>
+        <Transition 
+          in={this.state.showBlock} 
+          timeout={1000} 
+          mountOnEnter 
+          unmountOnExit 
+          onEnter={() => console.log('on Enter')}
+          onEntering={() => console.log('on Entering')}
+          onEntered={() => console.log('on Entered')}
+          onExit={() => console.log('on Exit')}
+          onExiting={() => console.log('on Exiting')}
+          onExited={() => console.log('on Exited')}
+        >
           {state => (
             <div style={{
               backgroundColor: 'red',
