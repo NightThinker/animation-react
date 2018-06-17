@@ -32,7 +32,7 @@ class App extends Component {
         <h1>React Animations</h1>
         <button className="Button" onClick={() => this.setState(prevState => ({showBlock: !prevState.showBlock}))}>Toggle</button>
         <br/>
-        <Transition in={this.state.showBlock} timeout={1000}>
+        <Transition in={this.state.showBlock} timeout={1000} mountOnEnter unmountOnExit>
           {state => (
             <div style={{
               backgroundColor: 'red',
@@ -40,7 +40,7 @@ class App extends Component {
               height: 100,
               margin: 'auto',
               transition: 'opacity 1s ease-out',
-              opacity: state === 'exited' ? 0 : 1
+              opacity: state === 'exiting' ? 0 : 1
               }}>
             </div>
           )}
